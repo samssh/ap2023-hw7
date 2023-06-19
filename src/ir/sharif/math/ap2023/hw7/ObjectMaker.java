@@ -22,6 +22,7 @@ public class ObjectMaker {
 
     public Object makeObject(Map<String, Object> values, String className) throws ReflectiveOperationException {
         // TODO
+        return null;
     }
 
 }
