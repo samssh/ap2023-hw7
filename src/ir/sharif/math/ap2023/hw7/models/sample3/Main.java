@@ -13,7 +13,7 @@ public class Main {
         valuesCa.put("a", 2);
         valuesCa.put("b", 3);
         valuesCa.put("c", 3);
-        C ca = (C) objectMaker.makeObject(valuesCa, "ir.sharif.math.ap2023.hw7.sample3.C");
+        C ca = (C) objectMaker.makeObject(valuesCa, "ir.sharif.math.ap2023.hw7.models.sample3.C");
         System.out.println(ca); // Ca{c=3, a=2, b=3}
 
         Map<String, Object> valuesCb = new HashMap<>();
@@ -21,7 +21,7 @@ public class Main {
         valuesCb.put("a", 2);
         valuesCb.put("b", 3);
         valuesCb.put("h", 3);
-        C cb = (C) objectMaker.makeObject(valuesCb, "ir.sharif.math.ap2023.hw7.sample3.C");
+        C cb = (C) objectMaker.makeObject(valuesCb, "ir.sharif.math.ap2023.hw7.models.sample3.C");
         System.out.println(cb); // Cb{h=3, a=2, b=3}
     }
 }

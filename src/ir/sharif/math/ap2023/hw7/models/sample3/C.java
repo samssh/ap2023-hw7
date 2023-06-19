@@ -8,9 +8,9 @@ public abstract class C {
     @UseAsConstructor(args = {"type"})
     static C constructor(String type) {
         switch (type) {
-            case "Ca":
+            case "CA":
                 return new Ca();
-            case "Cb":
+            case "CB":
                 return new Cb();
         }
         return null;
