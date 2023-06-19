@@ -3,6 +3,7 @@ package ir.sharif.math.ap2023.hw7;
 import ir.sharif.math.ap2023.hw7.models.test1.A1;
 import ir.sharif.math.ap2023.hw7.models.test2.A2;
 import ir.sharif.math.ap2023.hw7.models.test3.A3;
+import ir.sharif.math.ap2023.hw7.models.test4.A4;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -78,6 +79,36 @@ public class ObjectMakerTest {
         assertEquals(3L , a32.getAdad());
         assertEquals("sadat" , a32.getName());
         assertEquals(11 , a32.getK());
+
+    }
+
+    /**
+     * test to check @SetValue annotation for 3 nested classes
+     */
+    @Test
+    public void test4() throws ReflectiveOperationException {
+        ObjectMaker objectMaker = new ObjectMaker();
+        Map<String, Object> values = new HashMap<>();
+        Map<String, Object> valuesB = new HashMap<>();
+        Map<String, Object> valuesC = new HashMap<>();
+
+//        valuesC.put("a" , "ali");
+        valuesC.put("b" , 57);
+
+        valuesB.put("t" , 4);
+        valuesB.put("c4" , valuesC);
+
+
+        values.put("mm", 6);
+        values.put("cs", valuesB);
+        A4 a = (A4) objectMaker.makeObject(values, A4.class.getName());
+        System.out.println(a.toString()); // 6,6
+
+
+        assertEquals(values.get("mm") , a.getK());
+        assertEquals(values.get("mm") , a.getB4().getK());
+        assertEquals(values.get("mm") , a.getB4().getC4().getK());
+        assertEquals("ali" , a.getB4().getC4().getName());
 
     }
 }
