@@ -76,6 +76,7 @@ public class ObjectMaker {
             if (alternativeConstructor != null) {
                 UseAsConstructor annotation = alternativeConstructor.getAnnotation(UseAsConstructor.class);
                 Object[] args = Arrays.stream(annotation.args()).map(values::get).toArray();
+                alternativeConstructor.setAccessible(true);
                 result = alternativeConstructor.invoke(null, args);
             } else {
                 Constructor<?> constructor = clazz.getDeclaredConstructor();
@@ -134,14 +135,13 @@ public class ObjectMaker {
     private void fillPaths(Object root, Object object, String currentPath) throws ReflectiveOperationException {
         for (Field field : object.getClass().getDeclaredFields()) {
             String name = getFieldName(field);
+            field.setAccessible(true);
             SetValue annotation = field.getAnnotation(SetValue.class);
             if (annotation == null) {
                 if (!primitiveClasses.contains(field.getType()))
                     fillPaths(root, field.get(object), currentPath + "/" + name);
                 continue;
             }
-            // make field accessible
-            field.setAccessible(true);
             Field modifiersField = Field.class.getDeclaredField("modifiers");
             modifiersField.setAccessible(true);
             modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
