@@ -95,24 +95,24 @@ public class ObjectMakerTest {
         Map<String, Object> valuesB = new HashMap<>();
         Map<String, Object> valuesC = new HashMap<>();
 
-//        valuesC.put("a" , "ali");
         valuesC.put("b" , 57);
 
-        valuesB.put("t" , 4);
+        valuesB.put("k1" , 4);
         valuesB.put("c4" , valuesC);
 
 
         values.put("mm", 6);
         values.put("cs", valuesB);
         A4 a = (A4) objectMaker.makeObject(values, A4.class.getName());
-        System.out.println(a.toString()); // 6,6
+//        System.out.println(a.toString()); // 6,6
 
 
-        assertEquals(values.get("mm") , a.getK());
-        assertEquals(values.get("mm") , a.getB4().getK());
-        assertEquals(values.get("mm") , a.getB4().getC4().getK());
+        assertEquals(5 , a.getK());
+        assertEquals(4 , a.getE());
+        assertEquals(4 , a.getB4().getK());
         assertEquals("ali" , a.getB4().getC4().getName());
-
+        assertEquals(4 , a.getB4().getC4().getK());
+        assertEquals(56 , a.getB4().getC4().getB());
     }
 
     /**
@@ -129,7 +129,7 @@ public class ObjectMakerTest {
         values.put("a1", 76);
         values.put("b5", valuesB);
         A5 a = (A5) objectMaker.makeObject(values, A5.class.getName());
-        System.out.println(a.toString());
+//        System.out.println(a.toString());
 
         assertEquals(8 , a.getB5().getB2());
         assertEquals(5 , a.getB5().getB1());
@@ -156,7 +156,7 @@ public class ObjectMakerTest {
         values.put("k", 75);
         values.put("b6", valuesB);
         A6 a = (A6) objectMaker.makeObject(values, A6.class.getName());
-        System.out.println(a.toString());
+//        System.out.println(a.toString());
 
         assertEquals(56.0 , a.getB6().getJ() , 0.5);
         assertEquals(a.getB6().getJ() , a.getB6().getC6().getT() , 0.5);
