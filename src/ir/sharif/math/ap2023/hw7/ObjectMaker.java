@@ -133,7 +133,8 @@ public class ObjectMaker {
     }
 
     private void fillPaths(Object root, Object object, String currentPath) throws ReflectiveOperationException {
-        for (Field field : object.getClass().getDeclaredFields()) {
+        for (Field field : getAllFields(object.getClass())) {
+            if (Modifier.isStatic(field.getModifiers())) continue;
             String name = getFieldName(field);
             field.setAccessible(true);
             SetValue annotation = field.getAnnotation(SetValue.class);
