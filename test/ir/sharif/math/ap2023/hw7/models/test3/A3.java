@@ -36,37 +36,6 @@ public class A3 {
         this.adad = adad;
     }
 
-    //
-//    private static class A3A extends A3 {
-//
-//        private String username;
-//
-//        @Name(name = "sen")
-//        private int age;
-//
-//        public String getUsername() {
-//            return username;
-//        }
-//
-//        public void setUsername(String username) {
-//            this.username = username;
-//        }
-//
-//        public int getAge() {
-//            return age;
-//        }
-//
-//        public void setAge(int age) {
-//            this.age = age;
-//        }
-//    }
-//
-//    private static class A3B extends A3{
-//
-//    }
-//
-
-
     public A3() {
         k = 10;
         name = "mohammad";

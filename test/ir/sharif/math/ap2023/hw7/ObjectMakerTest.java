@@ -4,6 +4,8 @@ import ir.sharif.math.ap2023.hw7.models.test1.A1;
 import ir.sharif.math.ap2023.hw7.models.test2.A2;
 import ir.sharif.math.ap2023.hw7.models.test3.A3;
 import ir.sharif.math.ap2023.hw7.models.test4.A4;
+import ir.sharif.math.ap2023.hw7.models.test5.A5;
+import ir.sharif.math.ap2023.hw7.models.test6.A6;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -109,6 +111,51 @@ public class ObjectMakerTest {
         assertEquals(values.get("mm") , a.getB4().getK());
         assertEquals(values.get("mm") , a.getB4().getC4().getK());
         assertEquals("ali" , a.getB4().getC4().getName());
+
+    }
+
+    @Test
+    public void test5() throws ReflectiveOperationException {
+        ObjectMaker objectMaker = new ObjectMaker();
+        Map<String, Object> values = new HashMap<>();
+        Map<String, Object> valuesB = new HashMap<>();
+        Map<String, Object> valuesC = new HashMap<>();
+
+        valuesC.put("c3" , 42);
+
+        valuesB.put("c5" , valuesC);
+
+        values.put("a2", 75);
+        values.put("b5", valuesB);
+        A5 a = (A5) objectMaker.makeObject(values, A5.class.getName());
+        System.out.println(a.toString());
+    }
+
+
+    /**
+     * combinational test.
+     */
+    @Test
+    public void test6() throws ReflectiveOperationException {
+        ObjectMaker objectMaker = new ObjectMaker();
+        Map<String, Object> values = new HashMap<>();
+        Map<String, Object> valuesB = new HashMap<>();
+        Map<String, Object> valuesC = new HashMap<>();
+
+        valuesB.put("j" , 4);
+        valuesB.put("c6" , valuesC);
+
+        values.put("k", 75);
+        values.put("b6", valuesB);
+        A6 a = (A6) objectMaker.makeObject(values, A6.class.getName());
+        System.out.println(a.toString());
+
+        assertEquals(56.0 , a.getB6().getJ() , 0.5);
+        assertEquals(a.getB6().getJ() , a.getB6().getC6().getT() , 0.5);
+        assertEquals(75 , a.getK());
+        assertEquals(a.getK() , a.getB6().getC6().getU());
+        assertEquals("ali" , a.getName());
+
 
     }
 }
