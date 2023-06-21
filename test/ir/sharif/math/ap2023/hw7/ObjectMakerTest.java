@@ -5,6 +5,7 @@ import ir.sharif.math.ap2023.hw7.models.test2.A2;
 import ir.sharif.math.ap2023.hw7.models.test3.A3;
 import ir.sharif.math.ap2023.hw7.models.test4.A4;
 import ir.sharif.math.ap2023.hw7.models.test5.A5;
+import ir.sharif.math.ap2023.hw7.models.test5.B5;
 import ir.sharif.math.ap2023.hw7.models.test6.A6;
 import org.junit.Test;
 
@@ -114,26 +115,33 @@ public class ObjectMakerTest {
 
     }
 
+    /**
+     * combination test 1.
+     */
     @Test
     public void test5() throws ReflectiveOperationException {
         ObjectMaker objectMaker = new ObjectMaker();
         Map<String, Object> values = new HashMap<>();
         Map<String, Object> valuesB = new HashMap<>();
-        Map<String, Object> valuesC = new HashMap<>();
 
-        valuesC.put("c3" , 42);
-
-        valuesB.put("c5" , valuesC);
-
+        valuesB.put("b2" , 10);
         values.put("a2", 75);
+        values.put("a1", 76);
         values.put("b5", valuesB);
         A5 a = (A5) objectMaker.makeObject(values, A5.class.getName());
         System.out.println(a.toString());
+
+        assertEquals(8 , a.getB5().getB2());
+        assertEquals(5 , a.getB5().getB1());
+        assertEquals(a.getB5().getB1() , a.getA1());
+        assertEquals(0 , a.getA2());
+        assertEquals(7 , B5.getB3());
+
     }
 
 
     /**
-     * combinational test.
+     * combination test 2.
      */
     @Test
     public void test6() throws ReflectiveOperationException {
