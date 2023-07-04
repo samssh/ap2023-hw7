@@ -2,9 +2,12 @@ package ir.sharif.math.ap2023.hw7.models.test3;
 
 import ir.sharif.math.ap2023.hw7.Name;
 import ir.sharif.math.ap2023.hw7.UseAsConstructor;
-import ir.sharif.math.ap2023.hw7.models.sample3.Ca;
 
 public class A3 {
+
+    static {
+        System.out.println(A3.class.getClassLoader());
+    }
 
     private int k;
     private String name;

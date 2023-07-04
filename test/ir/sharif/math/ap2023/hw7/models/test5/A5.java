@@ -2,7 +2,6 @@ package ir.sharif.math.ap2023.hw7.models.test5;
 
 import ir.sharif.math.ap2023.hw7.Name;
 import ir.sharif.math.ap2023.hw7.SetValue;
-import ir.sharif.math.ap2023.hw7.UseAsConstructor;
 
 public class A5 {
 
