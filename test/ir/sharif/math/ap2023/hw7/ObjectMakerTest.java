@@ -102,11 +102,10 @@ public class ObjectMakerTest {
         Map<String, Object> valuesB = new HashMap<>();
         Map<String, Object> valuesC = new HashMap<>();
 
-//        valuesC.put("a" , "ali");
-        valuesC.put("b", 57);
+        valuesC.put("b" , 57);
 
-        valuesB.put("t", 4);
-        valuesB.put("c4", valuesC);
+        valuesB.put("k1" , 4);
+        valuesB.put("c4" , valuesC);
 
 
         values.put("mm", 6);
@@ -114,11 +113,12 @@ public class ObjectMakerTest {
         A4 a = (A4) objectMaker.makeObject(values, A4.class.getName());
 
 
-        assertEquals(values.get("mm"), a.getK());
-        assertEquals(values.get("mm"), a.getB4().getK());
-        assertEquals(values.get("mm"), a.getB4().getC4().getK());
-        assertEquals("ali", a.getB4().getC4().getName());
-
+        assertEquals(5 , a.getK());
+        assertEquals(4 , a.getE());
+        assertEquals(4 , a.getB4().getK());
+        assertEquals("ali" , a.getB4().getC4().getName());
+        assertEquals(4 , a.getB4().getC4().getK());
+        assertEquals(56 , a.getB4().getC4().getB());
     }
 
     /**

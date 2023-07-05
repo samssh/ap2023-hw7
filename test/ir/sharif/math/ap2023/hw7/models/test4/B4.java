@@ -1,10 +1,11 @@
 package ir.sharif.math.ap2023.hw7.models.test4;
 
+import ir.sharif.math.ap2023.hw7.Name;
 import ir.sharif.math.ap2023.hw7.SetValue;
 
 public class B4 {
 
-    @SetValue(path = "../mm")
+    @Name(name = "k1")
     private int k;
 
     private C4 c4;
@@ -25,10 +26,11 @@ public class B4 {
         this.c4 = c4;
     }
 
+
     @Override
     public String toString() {
         return "B4{" +
-                "t=" + k +
+                "k1=" + k +
                 ", c4=" + c4 +
                 '}';
     }
