@@ -4,11 +4,6 @@ import ir.sharif.math.ap2023.hw7.Name;
 import ir.sharif.math.ap2023.hw7.UseAsConstructor;
 
 public class A3 {
-
-    static {
-        System.out.println(A3.class.getClassLoader());
-    }
-
     private int k;
     private String name;
 
