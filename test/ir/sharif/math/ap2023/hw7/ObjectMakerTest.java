@@ -10,14 +10,13 @@ import ir.sharif.math.ap2023.hw7.models.test6.A6;
 import ir.sharif.math.ap2023.hw7.models.test8.A8;
 import ir.sharif.math.ap2023.hw7.models.test8.Ca;
 import ir.sharif.math.ap2023.hw7.models.test8.Cb;
+import ir.sharif.math.ap2023.hw7.models.test9.A9;
 import org.junit.Test;
 
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.MalformedURLException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -102,10 +101,10 @@ public class ObjectMakerTest {
         Map<String, Object> valuesB = new HashMap<>();
         Map<String, Object> valuesC = new HashMap<>();
 
-        valuesC.put("b" , 57);
+        valuesC.put("b", 57);
 
-        valuesB.put("k1" , 4);
-        valuesB.put("c4" , valuesC);
+        valuesB.put("k1", 4);
+        valuesB.put("c4", valuesC);
 
 
         values.put("mm", 6);
@@ -113,12 +112,12 @@ public class ObjectMakerTest {
         A4 a = (A4) objectMaker.makeObject(values, A4.class.getName());
 
 
-        assertEquals(5 , a.getK());
-        assertEquals(4 , a.getE());
-        assertEquals(4 , a.getB4().getK());
-        assertEquals("ali" , a.getB4().getC4().getName());
-        assertEquals(4 , a.getB4().getC4().getK());
-        assertEquals(56 , a.getB4().getC4().getB());
+        assertEquals(5, a.getK());
+        assertEquals(4, a.getE());
+        assertEquals(4, a.getB4().getK());
+        assertEquals("ali", a.getB4().getC4().getName());
+        assertEquals(4, a.getB4().getC4().getK());
+        assertEquals(56, a.getB4().getC4().getB());
     }
 
     /**
@@ -236,5 +235,25 @@ public class ObjectMakerTest {
         assertEquals(7, a.getC()[1].b);
         assertEquals(8, a.getC()[1].a);
         assertEquals(9, ((Cb) a.getC()[1]).getH());
+    }
+
+    @Test
+    public void test9() throws ReflectiveOperationException {
+        ObjectMaker objectMaker = new ObjectMaker();
+        Map<String, Object> values = new HashMap<>();
+        List<List<Integer>> l1 = Arrays.asList(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5)
+        );
+        values.put("a", l1);
+        A9 a9 = (A9) objectMaker.makeObject(values, A9.class.getName());
+        assertEquals(2, a9.getA().length);
+        assertEquals(3, a9.getA()[0].length);
+        assertEquals(1, a9.getA()[0][0]);
+        assertEquals(2, a9.getA()[0][1]);
+        assertEquals(3, a9.getA()[0][2]);
+        assertEquals(2, a9.getA()[1].length);
+        assertEquals(4, a9.getA()[1][0]);
+        assertEquals(5, a9.getA()[1][1]);
     }
 }
